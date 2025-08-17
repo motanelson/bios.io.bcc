@@ -1,2 +1,1 @@
-# wasm.builds.nodejs
-nodejs wasm building a file formated
+bios output on bruce c compiler
