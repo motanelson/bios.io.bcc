@@ -51,7 +51,7 @@ int main(){
 .globl _cls3
 .globl _sputc 
 _cls3:
-    mov ax,3
+    mov ax,*03
     int 0x10
     mov si,sp
     add si,*0x2
