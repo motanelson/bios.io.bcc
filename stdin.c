@@ -30,7 +30,7 @@ int i;
         c=pgetc();
         s[n]=c;
         s[n+1]=0;
-        //pputc(c);
+        pputc(c);
         if(c==13)break;
     }
 
@@ -85,7 +85,8 @@ _sputc:
     ret
 _cgetchar:
     mov al,0
-    mov ah,*0x1
+    mov ah,*0x7
+    mov dl,*0xff
     int *0x21
     ret
 #endasm
