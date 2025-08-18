@@ -32,6 +32,10 @@ int i;
         s[n+1]=0;
         pputc(c);
         if(c==13)break;
+        if(c==0)break;
+        if(c==0xff)break;
+        if(c==12)break;
+        if(c==10)break;
     }
 
 }
