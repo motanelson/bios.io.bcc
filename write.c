@@ -1,12 +1,5 @@
 #define varn 0x0080
 //bcc -Md -o stdout.com stdout.c
-void pputc(c)
-char c;
-{
-
-    sputc(c);
-
-}
 void pputs(s)
 char *s;
 {
@@ -14,7 +7,7 @@ char *s;
     char *ss=s;
     while(s[n]!=0){
         ss=s+n;
-        pputc(ss);
+        sputc(ss);
         n++;
     }
 
