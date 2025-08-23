@@ -77,8 +77,8 @@ typedef enum {
 
 
 #define BLOCO_TAMANHO 4096
-int main(argc, argv)
-int argc; char *argv[];
+long main(argc, argv)
+long argc; char *argv[];
 {
     srand(time(NULL));
     Main();
@@ -94,7 +94,7 @@ void Console_Beep() {
 }
 
 char* Console_ReadLine() {
-    int len=0;
+    long len=0;
     char* buffer = malloc(BLOCO_TAMANHO);
     len = strlen(buffer);
     if (!buffer) return NULL;
@@ -113,7 +113,7 @@ char* Console_ReadLine() {
 }
 
 char Console_Read() {
-    int c = getc(stdin);
+    long c = getc(stdin);
     if (c == EOF) {
         return '\0';  // ou um valor especial, como -1, se quiseres
     }
@@ -128,14 +128,14 @@ const char* texto;
 
 
 char Console_ReadKey() {
-    int c = getc(stdin);
+    long c = getc(stdin);
     if (c == EOF) {
         return '\0';  // ou um valor especial, como -1, se quiseres
     }
     return (char)c;
 }
 char *ToString(numero) 
-int numero;
+long numero;
 
 {
     char *buffer = (char *)malloc(1024); // Aloca 1024 caracteres
@@ -158,9 +158,9 @@ char* File_ReadAllText(path)
 
 const char* path;
 {
-    int capacidade = BLOCO_TAMANHO;
-    int tamanho = 0;
-    int lido=0;
+    long capacidade = BLOCO_TAMANHO;
+    long tamanho = 0;
+    long lido=0;
     char* buffer =NULL;
     char* novo=NULL;
     FILE* f = fopen(path, "r");
@@ -194,7 +194,7 @@ const char* path;
     return buffer;
 }
 
-int File_WriteAllText(path,conteudo)
+long File_WriteAllText(path,conteudo)
 const char* path; const char* conteudo;
 {
     FILE* f = fopen(path, "w");
@@ -212,11 +212,11 @@ void Console_BackgroundColor(color)
 ConsoleColor color;
 
 {
-    int r=(4 & color)>>2;
-    int g= 2 & color;
-    int b=(1 & color)<<2;
-    int a=r | g | b;
-    int n =0; 
+    long r=(4 & color)>>2;
+    long g= 2 & color;
+    long b=(1 & color)<<2;
+    long a=r | g | b;
+    long n =0; 
     n=40 + ((a) & 7 % 8);  // ANSI base para background (cores normais)
 
     
@@ -232,11 +232,11 @@ ConsoleColor color;
 void Console_ForegroundColor(color) 
 ConsoleColor color;
 {
-    int r=(4 & color)>>2;
-    int g= 2 & color;
-    int b=(1 & color)<<2;
-    int a=r | g | b;
-    int n = 0;
+    long r=(4 & color)>>2;
+    long g= 2 & color;
+    long b=(1 & color)<<2;
+    long a=r | g | b;
+    long n = 0;
     n=30 + ((a) & 7 % 8);  // ANSI base para background (cores normais)
 
     
@@ -257,21 +257,21 @@ void Console_ResetColor() {
 
 
 void Console_SetCursorPosition(x,y) 
-int x;int y;
+long x;long y;
 {
     printf("\033[%d;%dd", y,x);
     fflush(stdout);  // aplica imediatamente
 }
 
-int Random_Next(n)
-int n;
+long Random_Next(n)
+long n;
 {
     
     return rand() % n;
 
 }
 
-int Random_NextDouble(){
+long Random_NextDouble(){
     
     return (int)rand() / (long)RAND_MAX;
 
