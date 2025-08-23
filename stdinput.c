@@ -36,8 +36,9 @@ int f1;
 
 int main(){
     char ss[4096];
-    char *s="\033c\033[43;30m\nget me a string\n";
+    char *s="\nget me a string\n";
     int i=strlen(s);
+    cls3(0x6020);
     write(1,s,i);
     pgets(ss,4095);
     i=strlen(ss);
@@ -46,3 +47,32 @@ int main(){
     return 0;
     
 }
+#asm
+.globl _cls3
+
+_cls3:
+    mov ax,*3
+    int *0x10
+    mov si,sp
+    add si,*0x2
+    mov dx,[si]
+    mov ax,*0xb800
+    push ds
+    mov ds,ax
+    
+    mov ax,dx
+    mov cx,*0x8a0
+    mov si,*0x0
+    
+cls31:
+    
+    mov [si],ax   
+    inc si
+    inc si
+    dec cx
+    cmp cx,*0x0
+    jnz cls31
+    pop ds
+    ret
+
+#endasm
