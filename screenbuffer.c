@@ -38,7 +38,7 @@ void refresh(){
     int n=0;
     char *buffers=buffer;
     buffers[2001]=0;
-    printf("\033c\033[43;30m\n");
+    
     for(n=0;n<h-1;n++){
          memcpy(line,buffers,79);
          line[w]=0;
@@ -46,6 +46,7 @@ void refresh(){
          buffers=buffers+w;
     }
     buffers[2001]=0;
+    clscolor(0x60);
 }
 int main(){
    clear();
@@ -54,3 +55,29 @@ int main(){
    refresh();
    return 0;
 }
+#asm
+.globl _clscolor
+ 
+_clscolor:
+    mov si,sp
+    add si,*0x2
+    mov dl,[si]
+    mov ax,*0xb800
+    push ds
+    mov ds,ax
+    
+    mov al,dl
+    mov cx,*0x8a0
+    mov si,*0x1
+    
+clscolor1:
+    
+    mov [si],al   
+    inc si
+    inc si
+    dec cx
+    cmp cx,*0x0
+    jnz clscolor1
+    pop ds
+    ret
+#endasm
