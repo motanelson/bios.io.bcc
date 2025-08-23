@@ -58,8 +58,38 @@ char *s;
     pfputs(s,2);
 }
 int main(){
-    char *s="\033c\033[43;30m\nhello world...\n";
+    char *s="\nhello world...\n";
+    cls3(0x6020);
     pputs(s);
     pprintf("xx%xxxx%xx\n");
     pperror("err:>simulate a error\n");  
 }
+#asm
+.globl _cls3
+
+_cls3:
+    mov ax,*3
+    int *0x10
+    mov si,sp
+    add si,*0x2
+    mov dx,[si]
+    mov ax,*0xb800
+    push ds
+    mov ds,ax
+    
+    mov ax,dx
+    mov cx,*0x8a0
+    mov si,*0x0
+    
+cls31:
+    
+    mov [si],ax   
+    inc si
+    inc si
+    dec cx
+    cmp cx,*0x0
+    jnz cls31
+    pop ds
+    ret
+
+#endasm
