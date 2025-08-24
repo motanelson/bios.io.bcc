@@ -18,7 +18,7 @@ int main(){
         }else{
             t=0;
         }
-            printf("\033[43;30m%d\n",n);
+            printf("\033[43;30m%ld\n",n);
     }
     return 0;
 }
