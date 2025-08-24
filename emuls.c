@@ -1,9 +1,9 @@
 #include <stdio.h>
-int floatEmulator(a,b,matfunc)
-int a;int b;int matfunc;
+long floatEmulator(a,b,matfunc)
+long a;long b;long matfunc;
 { 
-  int ii=0;
-  int precs=1000;
+  long ii=0;
+  long precs=1000;
   if(matfunc==0)ii=a+b;
   if(matfunc==1)ii=a-b;
   if(matfunc==2)ii=a*b;
@@ -12,17 +12,17 @@ int a;int b;int matfunc;
   if(matfunc==5)ii=a/precs;
   return ii;
 }
-int main(){
-	int getInt=5;
-	int setInt=4;
-	int divs=3;
-	int mult=2;
-	int subs=1;
-	int adds=0;
-	int x=0;
-	int xx=16;
-	int xxx=0;
-	int readss=0;
+long main(){
+	long getInt=5;
+	long setInt=4;
+	long divs=3;
+	long mult=2;
+	long subs=1;
+	long adds=0;
+	long x=0;
+	long xx=16;
+	long xxx=0;
+	long readss=0;
 	cls3(0x6020);
 	for(x=0;x<xx;x++){
 		xxx=floatEmulator(x,0,setInt);
