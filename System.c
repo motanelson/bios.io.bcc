@@ -102,7 +102,7 @@ int File_WriteAllText(const char* path, const char* conteudo) {
 }
 void Console_BackgroundColor(ConsoleColor color) {
     int n = 40 + (color % 8);  // ANSI base para background (cores normais)
-    printf("\033[%dm", n);
+    printf("\033[%ldm", n);
 
     if (color >= 8) {
         printf("\033[1m"); // brilhante se for "High" color
@@ -112,7 +112,7 @@ void Console_BackgroundColor(ConsoleColor color) {
 }
 void Console_ForegroundColor(ConsoleColor color) {
     int n = 30 + (color % 8);  // ANSI base para background (cores normais)
-    printf("\033[%dm", n);
+    printf("\033[%ldm", n);
 
     if (color >= 8) {
         printf("\033[1m"); // brilhante se for "High" color
@@ -127,7 +127,7 @@ void Console_ResetColor() {
     fflush(stdout);  // aplica imediatamente
 }
 void Console_SetCursorPosition(int x,int y) {
-    printf("\033[%d;%dd", y,x);
+    printf("\033[%ld;%ldd", y,x);
     fflush(stdout);  // aplica imediatamente
 }
 
