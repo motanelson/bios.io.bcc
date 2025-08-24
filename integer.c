@@ -31,7 +31,7 @@ long main(){
     nm[0]=0;
     cls3(0x6020);
     n=mults(100);
-    printf("%d=%ld\n",n,divsn(n));
+    printf("%ld=%ld\n",n,divsn(n));
     nnn=mults(200);
     i=matsn(n,nnn,divs);
     while(t){
