@@ -31,13 +31,13 @@ long main(){
     nm[0]=0;
     cls3(0x6020);
     n=mults(100);
-    printf("%d=%d\n",n,divsn(n));
+    printf("%d=%ld\n",n,divsn(n));
     nnn=mults(200);
     i=matsn(n,nnn,divs);
     while(t){
         n=n+i;
         if(n<nnn){
-            printf("m%d=%d\n",n,divsn(n));
+            printf("m%ld=%ld\n",n,divsn(n));
         }else{
             t=0;
         }
